@@ -64,11 +64,13 @@ public class LoginFrame {
                            if(values[2].equals("1")) {
                                LibrarianFrame librarian_view = new LibrarianFrame();
                                librarian_view.librarian_frame();
+                               loginFrame.dispose();
                            }
                            //if the value for userType equals something else means user is patron
                            if(values[2].equals("0")){
                                UserFrame user_view = new UserFrame();
                                user_view.user_frame();
+                               loginFrame.dispose();
                            }
                         }
                     }
@@ -89,7 +91,7 @@ public class LoginFrame {
         loginFrame.add(cancelBtn);
 
         //Setting size of frame (width, height)
-        loginFrame.setSize(330, 180);//400 width and 500 height
+        loginFrame.setSize(330, 180);
 
         //Setting layout of the frame
         loginFrame.setLayout(new GridLayout(3, 2));
