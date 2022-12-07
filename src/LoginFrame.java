@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.File;
 import java.util.Scanner;
 
 public class LoginFrame {
@@ -62,14 +62,16 @@ public class LoginFrame {
                         if (values[0].trim().equals(username.trim()) && values[1].trim().equals(password.trim())) {
                             //if the value for userType equals 1 means user is librarian
                            if(values[2].equals("1")) {
+                               Librarian librarian = new Librarian(values[0],values[1],values[2],values[3],values[4]);
                                LibrarianFrame librarian_view = new LibrarianFrame();
-                               librarian_view.librarian_frame();
+                               librarian_view.librarian_frame(librarian);
                                loginFrame.dispose();
                            }
                            //if the value for userType equals something else means user is patron
                            if(values[2].equals("0")){
+                               Patron student = new Patron(values[0],values[1],values[2],values[3],values[4]);
                                UserFrame user_view = new UserFrame();
-                               user_view.user_frame();
+                               user_view.user_frame(student);
                                loginFrame.dispose();
                            }
                         }

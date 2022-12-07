@@ -1,5 +1,9 @@
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.util.Scanner;
 
-public abstract class People
+public class People
 {
     //field-variables
     private String userName; //Primary Key
@@ -39,11 +43,12 @@ public abstract class People
     {
         return lastName;
     }
-    /*don't need because we set the userID in the constructor
-    void int setUserID(int userID)
+
+
+    public void setUserID(String userID)
     {
-        this.userID=userID;
-    }*/
+        this.userName= userID;
+    }
     public void setPassword( String password ) //we need this in change person wants to change their password or they are initializing their password for the first time
     {
         this.password = password;
@@ -61,6 +66,58 @@ public abstract class People
         this.lastName = lastName;
     }
 
-    /* this might be the same job as viewBook()
-    public int viewBookStatus() {}*/
+    public void viewBooks(){
+        //Creating Frame
+        JFrame viewBooksUserFrame = new JFrame("Books Available");
+        //Creating Table for to data will be in table format.
+        JTable book_list = new JTable();
+        String[] bookColumnNames = {"Book ISBN", "Book Name", "Book Publisher", "Book Category", "Book Edition"};
+        //Creating model for the table.
+        DefaultTableModel bookModel = new DefaultTableModel();
+        //Setting up the columns names of the model.
+        bookModel.setColumnIdentifiers(bookColumnNames);
+
+        //Adding model to the table component.
+        book_list.setModel(bookModel);
+
+        //Setting up table auto-resizable.
+        book_list.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        book_list.setFillsViewportHeight(true);
+        book_list.setFocusable(false);
+
+        //Creating scrollbars for table.
+        JScrollPane scrollBook = new JScrollPane(book_list);
+        scrollBook.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollBook.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+        //Retrieve books from database file
+        try {
+            File data = new File("books_database.txt");
+            Scanner scan = new Scanner(data);
+
+            while(scan.hasNext()){
+                String input = scan.nextLine();
+                String[] values = input.split(",");
+                String book_ISBN = values[0];
+                String book_Name = values[1];
+                String book_Publisher = values[2];
+                String book_Category = values[3];
+                String book_Edition = values[4];
+                bookModel.addRow(new Object[]{ book_ISBN, book_Name, book_Publisher, book_Category,book_Edition});
+            }
+            //Adding scrollbars in the frame.
+            viewBooksUserFrame.add(scrollBook);
+
+            //Setting up the size of the frame. (width,height)
+            viewBooksUserFrame.setSize(800, 400);
+
+            //Setting up frame visible for user.
+            viewBooksUserFrame.setVisible(true);
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+    }
 }

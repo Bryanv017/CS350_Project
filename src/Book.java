@@ -6,15 +6,14 @@ public class Book {
     private String category;//genre of book
     private String edition;//edition of the book
     private String authors;//Author or authors of the book
-    private String bookStatus;//should return true if book is currently available in library
+
 
     //instances should be created by librarian class
-    public Book(String isbn, String title, String authors,String category, String edition,String status) {
+    public Book(String isbn, String title, String authors,String category, String edition) {
         this.isbn=isbn;
         this.title=title;
         this.authors=authors;
         this.category = category;
-        bookStatus = status;
         this.edition=edition;
 
     }
@@ -40,8 +39,6 @@ public class Book {
         return authors;
     }
 
-    public String getBookStatus() {
-        return bookStatus;
-    }
+
 
 }
