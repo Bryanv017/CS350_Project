@@ -8,7 +8,7 @@ public class UserFrame {
     public static void user_frame(Patron patron) {
 
         //Creating Frame for Student
-        JFrame studentFrame = new JFrame("Student Functions");
+        JFrame studentFrame = new JFrame("User Functions");
 
         //Creating button for view books
         JButton view_books_btn = new JButton("View Books");

@@ -1,3 +1,3 @@
 admin,password,1,john,doe
-patron,1234,0,bryan,velez
+patron,password,0,mike,lee
 
