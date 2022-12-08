@@ -106,7 +106,7 @@ public class Librarian extends People {
                 //Get user data from form
                 String username = add_username_tf.getText();
                 String password = add_password_tf.getText();
-                String userType = add_username_tf.getText();
+                String userType = add_usertype_tf.getText();
                 String firstName = add_firstName_tf.getText();
                 String lastName = add_lastName_tf.getText();
 

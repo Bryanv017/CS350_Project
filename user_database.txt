@@ -1,3 +1,2 @@
 admin,password,1,john,doe
 patron,password,0,mike,lee
-
